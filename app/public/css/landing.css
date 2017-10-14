@@ -1,0 +1,47 @@
+nav{
+	/*background-color: #323232;*/
+	top:0;
+	width: 100%;
+	padding: 1%;
+	display: flex;
+}
+
+body{
+	background-image: url('../images/Slice_1.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	font-family: 'Montserrat', sans-serif;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.logo{
+	width:auto;
+	height:5%;
+	align:center;
+	margin:auto;
+}
+.main-text {
+	margin:0 auto;
+	text-align: center;
+	color:white;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+	flex-direction:column;
+}
+
+.landing-button{
+	background-color: #4CAF50;
+	border: none;
+	border-radius:4px;
+	color: white;
+	padding:10px;
+	font-size: 16px;
+	text-align:center;
+}
+
+.landing-button:active{
+	background-color: #449d48;
+}
