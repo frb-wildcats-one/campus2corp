@@ -1,6 +1,6 @@
 # campus2corp
 ##### Get Up & Running:
-1. Clone the repo with `git clone https://github.com/frb-wildcats-one/campus2corp.git`
+1. Clone the repo with `git clone https://github.com/frb-wildcats-one/campus2corp.git && cd campus2corp`
 2. Install dependencies with `npm i`
 3. Run the app with `npm start`
 4. Open `localhost:3000`
