@@ -93,5 +93,61 @@ input[type=radio]:checked {
   padding-bottom: 2.5%;
   padding-top: 2.5%;
   height: 100%;
+  margin-top: 2%;
 }
 html,body { height:100%; }
+.totalcontrol {
+  background-color: #8bbde7;
+  font-family: 'Lato', sans-serif;
+  font-size: 36px;
+  color:#8bbde7;
+}
+.header{
+	background-color: #ffffff;
+	width: 100%;
+	padding: -2%;
+	margin:0;
+	position: fixed;
+	top:0;
+  z-index: 2;
+}
+.header{
+	display:flex;
+	flex-direction:row;
+	align-content: center;
+	justify-content: space-between;
+    z-index: 2;
+}
+.header-item{
+	margin: 1%;
+    z-index: 2;
+}
+.logo {
+	align:center;
+	padding:1%;
+    z-index: 2;
+
+	height:62px;
+	width: 83px;
+}
+.logo {
+	align:center;
+	padding:1%;
+    z-index: 2;
+
+	height:62px;
+	width: 83px;
+}
+.mysubmit {
+  margin-top: 5%;
+  border: solid;
+  border-radius: 10px;
+  border-color: #8bbde7;
+  color: #8bbde7;
+  font-size: 25px;
+}
+.submitcontrol {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
