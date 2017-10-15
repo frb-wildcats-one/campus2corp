@@ -127,9 +127,11 @@ body {
 }
 .flex-item2 {
   margin-left: 50px;
+  text-align: left;
 }
 .flex-item3 {
   margin-left: 10px;
+  text-align: left;
 }
 input[type=radio] {
   appearance: none;
