@@ -61,8 +61,9 @@ b{
 }
 
 .box{
-	height:100px;
-	background-color: #8bbde7;
+	height:200px;
+	/*border: 3.5px #8bbde7 solid;*
+	border-radius: 3.5%;**/
 }
 
 .img-bullet{
@@ -75,4 +76,16 @@ b{
 .contained{
 	width:20%;
 	margin:5%;
+}
+#box1{
+	background-image: url("../images/students.jpg");
+	background-size: cover;
+}
+#box2{
+	background-image: url("../images/graduate.jpg");
+	background-size: cover;
+}
+#box3{
+	background-image: url("../images/jobs.jpg");
+	background-size: cover;
 }
