@@ -124,7 +124,6 @@ app.put('/api/users', function(req, res){
     res.json({data: 'put request on user'});
 })
 app.get('/register', function(req, res) {
-    // res.sendFile(path.join(__dirname + '/public/Registration/setup.html'))
     res.sendFile(path.join(__dirname + '/public/setup/setup.html'))
 })
 app.post('/register', function(req, res){
