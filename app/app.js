@@ -9,6 +9,9 @@ const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}));
+
 /* STATIC FILES LOCATION */
 app.use(express.static(path.join(__dirname + '/public')))
 
@@ -30,19 +33,12 @@ var con = mysql.createConnection({
 })
 con.connect(function(err){
     if (err) throw err;
-    console.log("Connection works!");
-    // con.query('select * from users;', function(err, result){
-    //     if (err) throw err;
-    //     for (var i = 0; i < result.length; i++) {
-    //         console.log(result[i]);
-    //     }
-    // })
+    console.log("Connection established!");
 })
 
 
 /* ROUTES */
 app.get('/', function(req, res) {
-    console.log(req);
     res.send('Hello, world');
 })
 app.get('/test', function(req, res) {
@@ -69,13 +65,15 @@ app.get('/api/users', function(req, res){
 })
 // Returns a single user
 app.get('/api/users/:id', function(req, res){
-    con.query('select * from users where id =' + req.params.id + ';', function(err, result){
+    // con.query('select * from users where id =' + req.params.id + ';', function(err, result){
+    con.query('select id, name, city, state, school, stage from users where id =' + req.params.id + ';', function(err, result){
         if (err) throw err;
         res.json({data: result});
     })
 })
 // create user
 app.post('/api/users', function(req, res){
+    var email = req.param('email') || null;
     var name = req.param('name') || null;
     var city = req.param('city') || null;
     var state = req.param('state') || null;
@@ -86,6 +84,7 @@ app.post('/api/users', function(req, res){
     var stage = req.param('stage') || null;
 
     var params = {
+        email: email,
         name: name,
         city: city,
         state: state,
@@ -110,8 +109,65 @@ app.get('/register', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/Registration/setup.html'))
 })
 app.get('/login', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/login/loginpage.html'))
+    // res.sendFile(path.join(__dirname + '/public/login/loginpage.html'))
+    res.render('login/loginpage', {
+        helpers: {
+            incorrect_pass: function(){
+                return "none";
+            },
+            incorrect_email: function(){
+                return "none";
+            }
+        }
+    })
 })
+app.post('/login', function(req, res){
+    var email = req.body.email;
+    var pass = req.body.password;
+
+    // bcrypt.hash(pass, saltRounds).then(function(hash){
+    //     hashed = hash;
+    //     console.log('hash: ' + hash);
+    // });
+
+    // check if email exists and if the password matches the bashed pass
+    con.query('select * from users where email = ?', email, function(err, result){
+        if (err) throw err;
+        if (result.length == 0){
+            console.log("No Results");
+            res.render('login/loginpage', {
+                helpers: {
+                    incorrect_pass: function() {
+                        return "none";
+                    },
+                    incorrect_email: function(){
+                        return "block";
+                    }
+                }
+            })
+        } else {
+            // check password
+            bcrypt.compare(pass, result[0].password, function(err, validPassword){
+                if (validPassword == true){
+                    console.log("Successfully logging in: " + result[0]);
+                    res.redirect('/');
+                } else {
+                    console.log("INCORRECT PASSWORD");
+                    res.render('login/loginpage', {
+                        helpers: {
+                            incorrect_pass: function(){
+                                return "block";
+                            },
+                            incorrect_email: function(){
+                                return "none";
+                            }
+                        }
+                    })
+                }
+            }) // end bcrypt.compare
+        }
+    }) // end con.query
+}) // post /login
 
 
 /* LAUNCH THE SERVER */

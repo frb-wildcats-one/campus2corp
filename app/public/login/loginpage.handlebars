@@ -1,0 +1,28 @@
+<!doctype = "html">
+<html lang="en">
+
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+<head>
+  <link rel="stylesheet" href="login.css"></link>
+</head>
+
+<div class="wrapper">
+<div class="box">
+<body>
+  <h1> Login </h1>
+<form method="post">
+  <h2 class="label"> Email </h2>
+  <input type="text" class="field1" name="email" id="email">
+  <h3 class = "label"> Password </h3>
+  <input type="password" class="field2" name="password" id="password">
+  <div><input type="submit" class="button" value="Submit"></div>
+  <div style="display: {{incorrect_pass}}"class="incorrect"> Incorrect Password! </div>
+  <div style="display: {{incorrect_email}}"class="incorrect"> Email Not Found! </div>
+</form>
+<!-- <input type="submit" class= "button2" value= "Register"> -->
+
+</body>
+</div>
+</div>
+</html>
