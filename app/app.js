@@ -154,7 +154,7 @@ app.post('/login', function(req, res){
             bcrypt.compare(pass, result[0].password, function(err, validPassword){
                 if (validPassword == true){
                     console.log("Successfully logging in: " + result[0]);
-                    res.redirect('/');
+                    res.redirect('/profile');
                 } else {
                     console.log("INCORRECT PASSWORD");
                     res.render('login/loginpage', {
