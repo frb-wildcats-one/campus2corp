@@ -39,7 +39,7 @@ con.connect(function(err){
 
 /* ROUTES */
 app.get('/', function(req, res) {
-    res.send('Hello, world');
+//    res.sendFile(path.join(__dirname + '/public/index.html'))
 })
 app.get('/test', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/test.html'));
@@ -108,6 +108,10 @@ app.put('/api/users', function(req, res){
 app.get('/register', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/Registration/setup.html'))
 })
+app.get('/profile', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/profile/profile.html'))
+})
+
 app.get('/login', function(req, res) {
     // res.sendFile(path.join(__dirname + '/public/login/loginpage.html'))
     res.render('login/loginpage', {
@@ -168,7 +172,6 @@ app.post('/login', function(req, res){
         }
     }) // end con.query
 }) // post /login
-
 
 /* LAUNCH THE SERVER */
 app.listen(3000, function() {
