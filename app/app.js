@@ -15,6 +15,11 @@ app.get('/test', function(req, res) {
 app.get('/register', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/Registration/setup.html'))
 })
+app.get('/login', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/login/loginpage.html'))
+})
+
+
 /* LAUNCH THE SERVER */
 app.listen(3000, function() {
     console.log('Listening on 3000');
