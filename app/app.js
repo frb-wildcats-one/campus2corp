@@ -14,6 +14,13 @@ const bodyParser = require('body-parser');
 var session_email = "";
 var session_hash;
 
+var user_logged_in = false;
+user_auth = function(user_logged_in, res) {
+    if (!user_logged_in) {
+        res.redirect('/login');
+    }
+}
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 /* STATIC FILES LOCATION */
@@ -50,10 +57,14 @@ app.get('/test', function(req, res) {
 })
 app.get('/hbs-test', function(req, res){
     var someData = "HEY IM SOME DDATA";
+    var coolCompanyname = "facebook";
     res.render('page/page', {
         helpers: {
             data: function(){
                 return someData;
+            },
+            myCompanyName: function(){
+                return coolCompanyname;
             }
         }
     })
@@ -62,6 +73,7 @@ app.get('/hbs-test', function(req, res){
 /* API ROUTES */
 // Returns all users
 app.get('/api/users', function(req, res){
+    user_auth(user_logged_in, res);
     con.query('select * from users;', function(err, result){
         if (err) throw err;
         res.json({data: result});
@@ -69,6 +81,7 @@ app.get('/api/users', function(req, res){
 })
 // Returns a single user
 app.get('/api/users/:id', function(req, res){
+    user_auth(user_logged_in, res);
     // con.query('select * from users where id =' + req.params.id + ';', function(err, result){
     con.query('select id, name, city, state, school, stage from users where id =' + req.params.id + ';', function(err, result){
         if (err) throw err;
@@ -107,6 +120,7 @@ app.post('/api/users', function(req, res){
 })
 // update user
 app.put('/api/users', function(req, res){
+    user_auth(user_logged_in, res);
     res.json({data: 'put request on user'});
 })
 app.get('/register', function(req, res) {
@@ -136,6 +150,7 @@ app.post('/register', function(req, res){
 })
 
 app.get('/profile', function(req, res) {
+    user_auth(user_logged_in, res);
     res.sendFile(path.join(__dirname + '/public/profile/profile.html'))
 })
 
@@ -175,6 +190,7 @@ app.post('/login', function(req, res){
             // check password
             if (bcrypt.compareSync(pass, result[0].password) == true){
                 console.log("Successfully logging in: " + result[0]);
+                user_logged_in = true;
                 res.redirect('/profile');
             } else {
                 console.log("INCORRECT PASSWORD");
