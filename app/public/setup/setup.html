@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Registration</title>
-<link rel="stylesheet" type="text/css" href="setup.css">
+<link rel="stylesheet" type="text/css" href="setup/setup.css">
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
   <body>
@@ -22,13 +22,13 @@
     <div class = "div1">
       <div class = "fields">
         <h1 class = "myp1">Help us learn more about you:</h1>
-        <form>
+        <form method="post">
         <div class="fields-inputs">
-          <p class = "p1">email* <input type = "text" name = "Name" class = "i1"></p>
-          <p class = "p1">password* <input type = "text" name = "Name" class = "i1"></p>
-          <p class = "p1">name* <input type = "text" name = "Name" class = "i1"></p>
-          <p class = "p2" >location* <input type = "text" name = "City" class = "i2" placeholder = "city">
-            <select class = "states">
+          <p class = "p1">email* <input type="text" name="email" class="i1"></p>
+          <p class = "p1">password* <input type="password" name="password" class="i1"></p>
+          <p class = "p1">name* <input type="text" name="name" class="i1"></p>
+          <p class = "p2" >location* <input type="text" name="city" class="i2" placeholder = "city">
+            <select class = "states" name="state">
               <option value = "null" selected = "selected" disabled>-state-</option>
             	<option value="AL">Alabama</option>
             	<option value="AK">Alaska</option>
@@ -83,16 +83,16 @@
             	<option value="WY">Wyoming</option>
             </select>
           </p>
-        <p class = "p4">college <input type = "text" name = "School" class = "i3"></p>
+        <p class="p4">college <input type="text" name="school" class="i3"></p>
       </div>
-      <div class = "checkboxes">
-        <input class = "r1" type="radio" name="status" value="currently a student">  currently a student<br>
-        <input class = "r2" type="radio" name="status" value="college graduate and job hunting">  college graduate and job hunting<br>
-        <input class = "r3" type="radio" name="status" value="recently employed">  recently employed<br>
+      <div class="checkboxes">
+        <input class="r1" type="radio" name="stage" value="1" checked>  currently a student<br>
+        <input class="r2" type="radio" name="stage" value="2">  college graduate and job hunting<br>
+        <input class="r3" type="radio" name="stage" value="3">  recently employed<br>
       </div>
-      <div class = "industry">
-        <div class = "flex-item1">Industry</div>
-        <div class = "flex-item2">
+      <div class="industry">
+        <div class="flex-item1">Industry</div>
+        <div class="flex-item2">
             <input type="checkbox" name="industry" value="Health">Health<br>
             <input type="checkbox" name="industry" value="Technology">Technology<br>
             <input type="checkbox" name="industry" value="Engineering">Engineering<br>
@@ -106,7 +106,7 @@
         </div>
       </div>
       <div class="submittext">
-        <input class = "mysubmit" type="submit" value="Submit">
+        <input class="mysubmit" type="submit" value="Submit">
       </div>
     </form>
     </div>

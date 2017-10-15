@@ -6,10 +6,14 @@ const fs = require('fs');
 
 const exphbs = require('express-handlebars');
 
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const bcrypt = require('bcrypt-nodejs');
+const saltRounds = 2;
 
 const bodyParser = require('body-parser');
+
+var session_email = "";
+var session_hash;
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 /* STATIC FILES LOCATION */
@@ -106,8 +110,31 @@ app.put('/api/users', function(req, res){
     res.json({data: 'put request on user'});
 })
 app.get('/register', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/Registration/setup.html'))
+    // res.sendFile(path.join(__dirname + '/public/Registration/setup.html'))
+    res.sendFile(path.join(__dirname + '/public/setup/setup.html'))
 })
+app.post('/register', function(req, res){
+    var valueObj = req.body;
+    var hashedPass = "";
+    for (var obj in valueObj) {
+        if (valueObj[obj] == '') {
+            valueObj[obj] = null;
+        }
+    }
+
+    hashedPass = bcrypt.hashSync(valueObj['password']);
+    session_hash = hashedPass;
+    session_email = ""
+    valueObj['password'] = hashedPass;
+
+    con.query('insert into users set ?', req.body, function(err, results){
+        if (err) throw err;
+        console.log("SUCCESSFULLY ADDED USER");
+        res.redirect('/profile');
+    });
+    // res.redirect('/');
+})
+
 app.get('/profile', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/profile/profile.html'))
 })
@@ -129,11 +156,6 @@ app.post('/login', function(req, res){
     var email = req.body.email;
     var pass = req.body.password;
 
-    // bcrypt.hash(pass, saltRounds).then(function(hash){
-    //     hashed = hash;
-    //     console.log('hash: ' + hash);
-    // });
-
     // check if email exists and if the password matches the bashed pass
     con.query('select * from users where email = ?', email, function(err, result){
         if (err) throw err;
@@ -151,24 +173,22 @@ app.post('/login', function(req, res){
             })
         } else {
             // check password
-            bcrypt.compare(pass, result[0].password, function(err, validPassword){
-                if (validPassword == true){
-                    console.log("Successfully logging in: " + result[0]);
-                    res.redirect('/profile');
-                } else {
-                    console.log("INCORRECT PASSWORD");
-                    res.render('login/loginpage', {
-                        helpers: {
-                            incorrect_pass: function(){
-                                return "block";
-                            },
-                            incorrect_email: function(){
-                                return "none";
-                            }
+            if (bcrypt.compareSync(pass, result[0].password) == true){
+                console.log("Successfully logging in: " + result[0]);
+                res.redirect('/profile');
+            } else {
+                console.log("INCORRECT PASSWORD");
+                res.render('login/loginpage', {
+                    helpers: {
+                        incorrect_pass: function(){
+                            return "block";
+                        },
+                        incorrect_email: function(){
+                            return "none";
                         }
-                    })
-                }
-            }) // end bcrypt.compare
+                    }
+                })
+            } // end hash compare
         }
     }) // end con.query
 }) // post /login
