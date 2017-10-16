@@ -3,10 +3,23 @@
 
 <head>
   <link rel="stylesheet" href="launchlines.css"></link>
+  <link rel="stylesheet" type="text/css" href="../nav.css">
 </head>
 
 <!-- Student Stage -->
 <body>
+
+<div class="header">
+    <div class="header-item" style="display:flex;flex-direction:row;">
+      <img src="../images/logoNav.png" class="logo"/>
+      <a style="padding-left:2%;" href="../">launchline</a>
+    </div>
+  <div class="header-item">
+    <a style="font-size:18px;" href="/profile">Profile &nbsp|</a>
+    <a style="font-size:18px;" href="/logout">Log Out</a>
+  </div>
+</div>
+
 {{#if stage_one}}
     <div class="flex-grid">
     {{#each card_content}}
