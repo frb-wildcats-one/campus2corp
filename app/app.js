@@ -14,10 +14,13 @@ const bodyParser = require('body-parser');
 var session_email = "";
 var session_hash;
 
+var user_obj = {};
 var user_logged_in = false;
 user_auth = function(user_logged_in, res) {
     if (!user_logged_in) {
-        res.redirect('/login');
+        return false;
+    } else {
+        return true;
     }
 }
 
@@ -51,6 +54,10 @@ con.connect(function(err){
 /* ROUTES */
 app.get('/', function(req, res) {
 //    res.sendFile(path.join(__dirname + '/public/index.html'))
+})
+app.get('/logout', function(req, res){
+    user_logged_in = false;
+    res.redirect('/');
 })
 app.get('/test', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/test.html'));
@@ -140,21 +147,86 @@ app.post('/register', function(req, res){
     session_email = ""
     valueObj['password'] = hashedPass;
 
-    con.query('insert into users set ?', req.body, function(err, results){
+    var industry_array_string = "[";
+    if (valueObj.industry.constructor === Array){
+        for (var i = 0; i < valueObj.industry.length; i++){
+            if (i + 1 == valueObj.industry.length){
+                industry_array_string += '"' + valueObj.industry[i] + '"';
+            } else {
+                industry_array_string += '"' + valueObj.industry[i] + '", ';
+            }
+        }
+        industry_array_string += "]";
+    } else {
+        industry_array_string += '"' + valueObj.industry + '"]';
+    }
+    console.log(industry_array_string);
+    valueObj.industry = industry_array_string;
+
+    con.query('insert into users set ?', valueObj, function(err, results){
         if (err) throw err;
         console.log("SUCCESSFULLY ADDED USER");
-        res.redirect('/profile');
+
+        res.redirect('/');
     });
-    // res.redirect('/');
+
 })
 
 app.get('/profile', function(req, res) {
-    user_auth(user_logged_in, res);
-    res.sendFile(path.join(__dirname + '/public/profile/profile.html'))
+    if (!user_auth(user_logged_in, res)) {
+        return res.redirect('/login');
+    }
+    var industries_raw = user_obj.industry;
+    console.log(industries_raw);
+    var industry = JSON.parse(industries_raw);
+    res.render('profile/profile', {
+        user_data: user_obj,
+        stage_one: user_obj.stage == 1 ? 'checked' : '',
+        stage_two: user_obj.stage == 2 ? 'checked' : '',
+        stage_three: user_obj.stage == 3 ? 'checked' : '',
+        industry: {
+            health: industry.includes('Health') ? 'checked' : '',
+            technology: industry.includes('Technology') ? 'checked' : '',
+            engineering: industry.includes('Engineering') ? 'checked': '',
+            education: industry.includes('Education') ? 'checked' : '',
+            business: industry.includes('Business') ? 'checked' : '',
+            design_arts: industry.includes('Design/Arts') ? 'checked' : '',
+            communication: industry.includes('Communications') ? 'checked' : '',
+            agriculture_environment: industry.includes('Agriculture/Environment') ? 'checked' : ''
+        }
+    })
+})
+app.post('/profile', function(req, res){
+    var stage = req.body.status;
+
+    var industry_array_string = "[";
+    if (req.body.industry.constructor === Array){
+        for (var i = 0; i < req.body.industry.length; i++){
+            if (i + 1 == req.body.industry.length){
+                industry_array_string += '"' + req.body.industry[i] + '"';
+            } else {
+                industry_array_string += '"' + req.body.industry[i] + '", ';
+            }
+        }
+        industry_array_string += "]";
+    } else {
+        industry_array_string += '"' + req.body.industry + '"]';
+    }
+
+    con.query("update users set stage = " + stage + ", industry = ? where id = " + user_obj.id + ';', industry_array_string, function(err, result){
+        if (err) throw err;
+        // return res.redirect('/profile');
+        console.log("Successfully updated user information");
+    })
+    con.query("select * from users where id = ?", user_obj.id, function(err, result){
+        user_obj = result[0];
+        user_obj.letter = result[0].name.charAt(0);
+        return res.redirect('/profile');
+    })
 })
 
 app.get('/login', function(req, res) {
-    // res.sendFile(path.join(__dirname + '/public/login/loginpage.html'))
+    // console.log(req.sessx);
     res.render('login/loginpage', {
         helpers: {
             incorrect_pass: function(){
@@ -189,6 +261,8 @@ app.post('/login', function(req, res){
             // check password
             if (bcrypt.compareSync(pass, result[0].password) == true){
                 console.log("Successfully logging in: " + result[0]);
+                user_obj = result[0];
+                user_obj.letter = result[0].name.charAt(0);
                 user_logged_in = true;
                 res.redirect('/profile');
             } else {

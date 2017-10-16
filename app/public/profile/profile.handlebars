@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="profile.css">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../nav.css">
+<title>myProfile</title>
+</head>
+<body>
+  <div class="header">
+      <div class="header-item" style="display:flex;flex-direction:row;">
+        <img src="../images/logoNav.png" class="logo"/>
+        <a style="padding-left:2%;">launchline</a>
+      </div>
+    <div class="header-item">
+      <a style="font-size:18px;">LaunchPad &nbsp|</a>
+      <a style="font-size:18px;">Log Out</a>
+    </div>
+  </div>
+
+
+<div class = "mainbody">
+<div class = "container">
+  <div class = "flex-item">
+  <div class = "testing">
+    <h1 class = "p1">{{user_data.letter}}</h1>
+  </div>
+</div>
+  <div class = "flex-item">
+    <div class="myStudent">
+    <p class = "information"><strong>{{user_data.name}}</strong></p>
+    <p>{{user_data.city}}, {{user_data.state}}</p>
+    {{#if user_data.school}}
+        <p>{{user_data.school}}</p>
+    {{else}}
+        <p>{{user_data.company}}</p>
+    {{/if}}
+  </div>
+  </div>
+</div>
+<form method="post">
+<div class = "radioflex">
+  <div class = "checkboxes">
+    <input class = "r1" type="radio" name="status" value="1" {{stage_one}}>  currently a student<br>
+    <input class = "r2" type="radio" name="status" value="2" {{stage_two}}>  college graduate and job hunting<br>
+    <input class = "r3" type="radio" name="status" value="3" {{stage_three}}>  recently employed<br>
+  </div>
+
+</div>
+<div class = "industry">
+  <div class = "flex-item1">Industry</div>
+  <div class = "flex-item2">
+      <input type="checkbox" name="industry" value="Health" {{industry.health}}>Health<br>
+      <input type="checkbox" name="industry" value="Technology" {{industry.technology}}>Technology<br>
+      <input type="checkbox" name="industry" value="Engineering" {{industry.engineering}}>Engineering<br>
+      <input type="checkbox" name="industry" value="Education" {{industry.education}}>Education<br>
+  </div>
+  <div class="flex-item3">
+      <input type="checkbox" name="industry" value="Business" {{industry.business}}>Business<br>
+      <input type="checkbox" name="industry" value="Design/Arts" {{industry.design_arts}}>Design/Arts<br>
+      <input type="checkbox" name="industry" value="Communications" {{industry.communication}}>Communications<br>
+      <input type="checkbox" name="industry" value="Agriculture/Environmental" {{industry.agriculture_environment}}>Agriculture/Environmental<br>
+  </div>
+</div>
+<div class = "submitcontrol">
+  <input class = "mysubmit" type="submit" value="Save">
+</div>
+</form>
+</div>
+</body>
+</html>
