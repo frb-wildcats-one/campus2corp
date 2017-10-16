@@ -38,6 +38,7 @@ app.get('/launchlines', function(req, res) {
     res.render('launchlines/launchlines',{
       card_content: [
           {
+            // “Anderson Hall and Fairchild Hall Kansas State University” by Max Stinnett is licensed under CC BY 2.0
             img: "/images/ksu.png",
             title: "On your campus",
             description: "Find resources."
