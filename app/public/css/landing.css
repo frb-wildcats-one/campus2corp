@@ -89,3 +89,7 @@ b{
 	background-image: url("../images/jobs.jpg");
 	background-size: cover;
 }
+.hero-text {
+	margin-top: 12.2%;
+	margin-bottom: 8%;
+}
