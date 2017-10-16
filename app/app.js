@@ -86,19 +86,22 @@ app.get('/launchlines', function(req, res) {
               name: "Event 1",
               location: "Kansas City, MO",
               date: "10/1/17",
-              time: "12:00pm"
+              time: "12:00pm",
+              industry: "technology"
             },
             {
               name: "Event 2",
               location: "Manhattan, KS",
               date: "11/10/17",
-              time: "3:00pm"
+              time: "3:00pm",
+              industry: "design/art"
             },
             {
               name: "Event 3",
               location: "Kansas City, MO",
               date: "12/8/17",
-              time: "5:00pm"
+              time: "5:00pm",
+              industry: "business"
             }
           ],
       employed_content: [
@@ -106,37 +109,43 @@ app.get('/launchlines', function(req, res) {
               name: "Event 1",
               location: "Minneapolis, MN",
               date: "10/1/17",
-              time: "12:00pm"
+              time: "12:00pm",
+              industry: "business"
             },
             {
               name: "Event 2",
               location: "St.Paul, MN",
               date: "11/5/17",
-              time: "3:00pm"
+              time: "3:00pm",
+              industry: "engineering"
             },
             {
               name: "Sponsored: Event 3",
               location: "Minneapolis, MN",
               date: "12/8/17",
-              time: "5:00pm"
+              time: "5:00pm",
+              industry: "engineering"
             },
             {
               name: "Event 4",
               location: "Minneapolis, MN",
               date: "1/1/18",
-              time: "12:00pm"
+              time: "12:00pm",
+              industry: "engineering"
             },
             {
               name: "Event 5",
               location: "St.Paul, MN",
               date: "2/2/18",
-              time: "3:00pm"
+              time: "3:00pm",
+              industry: "engineering"
             },
             {
               name: "Event 6",
               location: "Minneapolis, MN",
               date: "12/8/17",
-              time: "5:00pm"
+              time: "5:00pm",
+              industry: "engineering"
             }
           ],
       helpers: {
