@@ -286,6 +286,9 @@ app.post('/login', function(req, res){
 app.get('/launchlines', function(req, res) {
     // res.sendFile(path.join(__dirname + '/public/launch-lines/launchlines.html'))
     res.render('launchlines/launchlines',{
+        stage_one: user_obj.stage == 1 ? true : false,
+        stage_two: user_obj.stage == 2 ? true : false,
+        stage_three: user_obj.stage == 3 ? true : false,
       card_content: [
           {
             // “Anderson Hall and Fairchild Hall Kansas State University” by Max Stinnett is licensed under CC BY 2.0

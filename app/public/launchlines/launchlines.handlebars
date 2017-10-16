@@ -7,18 +7,22 @@
 
 <!-- Student Stage -->
 <body>
-<div class="flex-grid">
-{{#each card_content}}
-  <div style = "background-image: url({{this.img}})" class="card" class="col">
-    <div class="text">  <p class = "title text"> {{this.title}}</p>
-      <!-- <p class = "img"> <img src={{this.img}}></img></p> -->
-      <p class = "description"> {{this.description}}</p>
+{{#if stage_one}}
+    <div class="flex-grid">
+    {{#each card_content}}
+      <div style = "background-image: url({{this.img}})" class="card" class="col">
+        <div class="text">  <p class = "title text"> {{this.title}}</p>
+          <!-- <p class = "img"> <img src={{this.img}}></img></p> -->
+          <p class = "description"> {{this.description}}</p>
+        </div>
+      </div>
+    {{/each}}
     </div>
-  </div>
-{{/each}}
-</div>
+{{/if}}
 
 <!-- Graduate Stage -->
+
+{{#if stage_two}}
 <h1> Companies Near You </h1>
 
 <div class="flex-grid-company">
@@ -47,9 +51,11 @@
   </div>
 {{/each}}
 </div>
+{{/if}}
 
 
 <!-- Employed Stage -->
+{{#if stage_three}}
 <h3> Community Events </h3>
 
 <div class="flex-grid3">
@@ -64,6 +70,7 @@
   </div>
 {{/each}}
 </div>
+{{/if}}
 
 </body>
 </html>
