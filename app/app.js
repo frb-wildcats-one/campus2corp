@@ -64,17 +64,20 @@ app.get('/launchlines', function(req, res) {
               companyName: "Sponsored: Apple",
               companyLocation: "Kansas City, MO",
               website: "apple.com",
+              industry: "technology"
               // boolean sponsored
             },
             {
               companyName: "Federal Reserve Bank of Kansas City",
               companyLocation: "Kansas City, MO",
               website: "kansascityfed.org",
+              industry: "business"
             },
             {
               companyName: "Cerner",
               companyLocation: "Kansas City, MO",
               website: "cerner.com",
+              industry: "health"
             }
           ],
 
