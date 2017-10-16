@@ -1,0 +1,129 @@
+<!doctype ="html">
+<html lang = "en">
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+		<link rel="stylesheet" href="css/landing.css">
+		<link rel="stylesheet" href="css/sidebar.css">
+		<title>Landing page</title>
+	</head>
+	<body>
+		<div class="header">
+				<div class="header-item" style="display:flex;flex-direction:row;">
+					<img src="images/logoNav.png" class="logo"/>
+					<a style="padding-left:2%;">launchline</a>
+				</div>
+			<div class="header-item">
+				<a style="font-size:18px;">Login &nbsp;|</a>
+				<a style="font-size:18px;">Register</a>
+			</div>
+		</div>
+
+		<div class="hero-section">
+			<div class="hero-text">
+				<b>The transition from school to work can be tough.</b>
+			</div>
+		</div>
+
+		<div class="lower-page">
+			<div>
+				<p style="font-size:22px;text-align:center;padding-top:4%;">Wherever you're at, from campus to corporate, we can help.</p>
+				<div class="box-container">
+					<div class="contained">
+						<div class="box">
+						</div>
+					<p style="font-size:22px;text-align:center;">Prepare</p>
+					</div>
+					<img src="images/logoNav.png" class="img-bullet"/>
+					<div class="contained">
+						<div class="box">
+						</div>
+					<p style="font-size:22px;text-align:center;">Connect</p>
+					</div>
+					<img src="images/logoNav.png" class="img-bullet"/>
+					<div class="contained">
+						<div class="box">
+						</div>
+					<p style="font-size:22px;text-align:center;">Adapt</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div id="mySidenav" class="sidenav">
+			<img id="sidebar-img" onclick="toggleNav()" src="images/slideout.png"></img>
+			<p class="checklist-title">your checklist</p>
+
+			<div class="check-element" onclick="toggleCheckElement(0)">
+				<p class="element-title">
+					<input class="check-check" id="checkBox" type="checkbox">&nbsp;dummytitle &nbsp;<b class="glyph">&#11206;</b>
+				</p>
+				<div class="element-body">
+					<p>dummybody dummybody dummybody dummybody dummybody</p>
+				</div>
+			</div>
+
+			<div class="check-element" onclick="toggleCheckElement(1)">
+				<p class="element-title">
+					<input class="check-check" id="checkBox" type="checkbox">&nbsp;dummytitle &nbsp;<b class="glyph">&#11206;</b>
+				</p>
+				<div class="element-body">
+					<p>dummybody dummybody dummybody dummybody dummybody</p>
+				</div>
+			</div>
+
+			<div class="check-element" onclick="toggleCheckElement(2)">
+				<p class="element-title">
+					<input class="check-check" id="checkBox" type="checkbox">&nbsp;dummytitle &nbsp;<b class="glyph">&#11206;</b>
+				</p>
+				<div class="element-body">
+					<p>dummybody dummybody dummybody dummybody dummybody</p>
+				</div>
+			</div>
+
+
+		</div>
+
+
+		<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+			<div id="main">
+			</div>
+
+	</body>
+	<script>
+
+
+function toggleCheckElement(elementNum){
+	document.getElementsByClassName("element-body")[elementNum].style.height = "100px";
+	document.getElementsByClassName("element-body")[elementNum].classList.toggle("show");
+	document.getElementsByClassName("glyph")[elementNum].classList.toggle("rotate-me");
+}
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+		document.getElementById("sidebar-img").style.transition = "0.2s";
+		document.getElementById("main").style.marginLeft = "250px";
+		document.getElementById("sidebar-img").style.right = "0px";
+}
+
+function toggleNav() {
+	if(document.getElementById("mySidenav").style.width == "250px"){
+		closeNav();
+	}else{
+		openNav();
+	}
+}
+
+function closeNav() {
+  	document.getElementById("mySidenav").style.width = "0";
+
+		document.getElementById("sidebar-img").style.transition = "0.5s";
+		document.getElementById("mySidenav").style.transition = "0.5s";
+		document.getElementById("main").style.marginLeft = "0";
+		document.getElementById("sidebar-img").style.right = "-250px";
+}
+</script>
+
+</html>
