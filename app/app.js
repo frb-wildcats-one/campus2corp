@@ -196,6 +196,7 @@ app.get('/profile', function(req, res) {
         }
     })
 })
+
 app.post('/profile', function(req, res){
     var stage = req.body.status;
 
@@ -281,6 +282,130 @@ app.post('/login', function(req, res){
         }
     }) // end con.query
 }) // post /login
+
+app.get('/launchlines', function(req, res) {
+    // res.sendFile(path.join(__dirname + '/public/launch-lines/launchlines.html'))
+    res.render('launchlines/launchlines',{
+      card_content: [
+          {
+            // “Anderson Hall and Fairchild Hall Kansas State University” by Max Stinnett is licensed under CC BY 2.0
+            img: "/images/ksu.png",
+            title: "On your campus",
+            description: "Find resources."
+          },
+          {
+            img: "/images/resume.png",
+            title: "Resumes and Cover Letters",
+            description: "Prepare for job applications."
+          },
+          {
+            img: "/images/interview.png",
+            title: "Interviews",
+            description: "Prepare for the interview."
+          },
+          {
+            img: "/images/activities.png",
+            title: "Clubs",
+            description: "Get involved."
+          }
+        ],
+
+      company_content: [
+            {
+              companyName: "Sponsored: Apple",
+              companyLocation: "Kansas City, MO",
+              website: "apple.com",
+              industry: "technology"
+              // boolean sponsored
+            },
+            {
+              companyName: "Federal Reserve Bank of Kansas City",
+              companyLocation: "Kansas City, MO",
+              website: "kansascityfed.org",
+              industry: "business"
+            },
+            {
+              companyName: "Cerner",
+              companyLocation: "Kansas City, MO",
+              website: "cerner.com",
+              industry: "health"
+            }
+          ],
+
+      event_content: [
+            {
+              name: "Event 1",
+              location: "Kansas City, MO",
+              date: "10/1/17",
+              time: "12:00pm",
+              industry: "technology"
+            },
+            {
+              name: "Event 2",
+              location: "Manhattan, KS",
+              date: "11/10/17",
+              time: "3:00pm",
+              industry: "design/art"
+            },
+            {
+              name: "Event 3",
+              location: "Kansas City, MO",
+              date: "12/8/17",
+              time: "5:00pm",
+              industry: "business"
+            }
+          ],
+      employed_content: [
+            {
+              name: "Event 1",
+              location: "Minneapolis, MN",
+              date: "10/1/17",
+              time: "12:00pm",
+              industry: "business"
+            },
+            {
+              name: "Event 2",
+              location: "St.Paul, MN",
+              date: "11/5/17",
+              time: "3:00pm",
+              industry: "engineering"
+            },
+            {
+              name: "Sponsored: Event 3",
+              location: "Minneapolis, MN",
+              date: "12/8/17",
+              time: "5:00pm",
+              industry: "engineering"
+            },
+            {
+              name: "Event 4",
+              location: "Minneapolis, MN",
+              date: "1/1/18",
+              time: "12:00pm",
+              industry: "engineering"
+            },
+            {
+              name: "Event 5",
+              location: "St.Paul, MN",
+              date: "2/2/18",
+              time: "3:00pm",
+              industry: "engineering"
+            },
+            {
+              name: "Event 6",
+              location: "Minneapolis, MN",
+              date: "12/8/17",
+              time: "5:00pm",
+              industry: "engineering"
+            }
+          ],
+      helpers: {
+        test: function(){
+          return "hello";
+        }
+      } // end helpers
+    })
+})
 
 /* LAUNCH THE SERVER */
 app.listen(3000, function() {
