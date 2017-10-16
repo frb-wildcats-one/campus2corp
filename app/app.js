@@ -53,7 +53,14 @@ con.connect(function(err){
 
 /* ROUTES */
 app.get('/', function(req, res) {
-//    res.sendFile(path.join(__dirname + '/public/index.html'))
+      // res.sendFile(path.join(__dirname + '/public/index.handlebars'))
+      res.render('index',{
+        // helpers: {
+        //   myDataName: function(){
+        //     return "a string or whatever";
+        //   }
+        // }
+      })
 })
 app.get('/logout', function(req, res){
     user_logged_in = false;

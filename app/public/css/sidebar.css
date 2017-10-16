@@ -1,0 +1,134 @@
+/* The side navigation menu */
+.sidenav {
+    height: 70%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 15%;
+    right:0;
+    background-color:#d6d6d6;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    border-radius: 0px 4px 0px 4px;
+}
+
+.triangle{
+ width: 0;
+ border-top: 27px solid transparent;
+ border-bottom: 27px solid transparent;
+ position:fixed;
+ right:20px;
+ top:15%;
+ transition: 0.5s;
+ border-right: 27px solid #61a5de;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#open-link{
+  color:black;
+  position:fixed;
+  right:0;
+  top:15%;
+  transition: 0.5s;
+}
+
+#sidebar-img{
+  height:80px;
+  width:325px;
+  position:fixed;
+  right:-250px;
+  transition: 0.2s;
+  z-index:0;
+}
+
+.checklist-title{
+  color:white;
+  position:fixed;
+  top:18%;
+  margin-left:5%;
+  font-size:26px;
+  transition: 1s;
+  white-space: nowrap;
+}
+
+.continue-rectangle{
+  height:54px;
+  width:250px;
+  background-color: #61a5de;
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-right .5s;
+    padding: 20px;
+}
+
+.check-element{
+  white-space: nowrap;
+  position:relative;
+  top:90px;
+  width:90%;
+  left:10%;
+  transition: 0.5s;
+  z-index: -1;
+}
+.element-title{
+  font-size:22px;
+  margin-bottom: 0;
+  user-select: none;
+}
+.element-body{
+  display:none;
+  width:80%;
+  white-space: normal;
+  font-size:18px;
+  position:relative;
+  left:10%;
+  transition: 0.5s;
+}
+.glyph{
+    display:inline-block;
+    color:#8bbed7;
+    transition: 0.5s;
+  }
+  .rotate-me{
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transition: 0.5s;
+}
+.check-check{
+}
+.show{
+  display:block;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
