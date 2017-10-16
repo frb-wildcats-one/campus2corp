@@ -4,6 +4,7 @@
 <head>
   <link rel="stylesheet" href="launchlines.css"></link>
   <link rel="stylesheet" type="text/css" href="../nav.css">
+  <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
 </head>
 
 <!-- Student Stage -->
@@ -30,6 +31,59 @@
         </div>
       </div>
     {{/each}}
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+        <!-- <img id="sidebar-img" onclick="toggleNav()" src="/images/slideout.png"></img> -->
+        <img id="sidebar-img" onclick="toggleNav()" src="../images/slideout.png"></img>
+        <p class="checklist-title">your checklist</p>
+
+        <div class="check-element" onclick="toggleCheckElement(0)">
+            <p class="element-title">
+                <input class="check-check" id="checkBox" type="checkbox">&nbsp;Resume &nbsp;<b class="glyph">&#11206;</b>
+            </p>
+            <div class="element-body">
+                <p style="font-size: 18px;">Most job applications will ask you for a resume.</p>
+            </div>
+        </div>
+
+        <div class="check-element" onclick="toggleCheckElement(1)">
+            <p class="element-title">
+                <input class="check-check" id="checkBox" type="checkbox">&nbsp;Interview Prep &nbsp;<b class="glyph">&#11206;</b>
+            </p>
+            <div class="element-body">
+                <p style="font-size: 18px;">Preparing for an interview is a good way to make sure you ace it.</p>
+            </div>
+        </div>
+
+        <div class="check-element" onclick="toggleCheckElement(2)">
+            <p class="element-title">
+                <input class="check-check" id="checkBox" type="checkbox">&nbsp;Involvement &nbsp;<b class="glyph">&#11206;</b>
+            </p>
+            <div class="element-body">
+                <p style="font-size: 18px;">Being involved in your school shows your initiative.</p>
+            </div>
+        </div>
+
+        <div class="check-element" onclick="toggleCheckElement(3)">
+            <p class="element-title">
+                <input class="check-check" id="checkBox" type="checkbox">&nbsp;Apply &nbsp;<b class="glyph">&#11206;</b>
+            </p>
+            <div class="element-body">
+                <p style="font-size: 18px;">Applying for a job is a surefire way to get a job.</p>
+            </div>
+        </div>
+
+        <div class="check-element" onclick="toggleCheckElement(4)">
+            <p class="element-title">
+                <input class="check-check" id="checkBox" type="checkbox">&nbsp;Follow Up &nbsp;<b class="glyph">&#11206;</b>
+            </p>
+            <div class="element-body">
+                <p style="font-size: 18px;">Following up on an interview is a great way to stand out.</p>
+            </div>
+        </div>
+
+
     </div>
 {{/if}}
 
@@ -64,6 +118,40 @@
   </div>
 {{/each}}
 </div>
+
+<div id="mySidenav" class="sidenav">
+    <img id="sidebar-img" onclick="toggleNav()" src="../images/slideout.png"></img>
+    <p class="checklist-title">Graduate</p>
+
+    <div class="check-element" onclick="toggleCheckElement(0)">
+        <p class="element-title">
+            <input class="check-check" id="checkBox" type="checkbox">&nbsp;Connect &nbsp;<b class="glyph">&#11206;</b>
+        </p>
+        <div class="element-body">
+            <p style="font-size: 18px;">Connect with mentors and find events.</p>
+        </div>
+    </div>
+
+    <div class="check-element" onclick="toggleCheckElement(1)">
+        <p class="element-title">
+            <input class="check-check" id="checkBox" type="checkbox">&nbsp;Apply &nbsp;<b class="glyph">&#11206;</b>
+        </p>
+        <div class="element-body">
+            <p style="font-size: 18px;">Prepare to apply for positions.</p>
+        </div>
+    </div>
+
+    <div class="check-element" onclick="toggleCheckElement(2)">
+        <p class="element-title">
+            <input class="check-check" id="checkBox" type="checkbox">&nbsp;Follow Up &nbsp;<b class="glyph">&#11206;</b>
+        </p>
+        <div class="element-body">
+            <p style="font-size: 18px;">Following up on an interview is a great way to stand out.</p>
+        </div>
+    </div>
+
+
+</div>
 {{/if}}
 
 
@@ -86,4 +174,37 @@
 {{/if}}
 
 </body>
+    <script>
+
+
+    function toggleCheckElement(elementNum){
+        document.getElementsByClassName("element-body")[elementNum].style.height = "100px";
+        document.getElementsByClassName("element-body")[elementNum].classList.toggle("show");
+        document.getElementsByClassName("glyph")[elementNum].classList.toggle("rotate-me");
+    }
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("sidebar-img").style.transition = "0.2s";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.getElementById("sidebar-img").style.right = "0px";
+    }
+
+    function toggleNav() {
+    if(document.getElementById("mySidenav").style.width == "250px"){
+        closeNav();
+    }else{
+        openNav();
+    }
+    }
+
+    function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+
+        document.getElementById("sidebar-img").style.transition = "0.5s";
+        document.getElementById("mySidenav").style.transition = "0.5s";
+        document.getElementById("main").style.marginLeft = "0";
+        document.getElementById("sidebar-img").style.right = "-250px";
+    }
+    </script>
 </html>
