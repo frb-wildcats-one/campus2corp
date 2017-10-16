@@ -1,0 +1,190 @@
+
+h1 {
+  padding-top: 20px;
+  padding-left: 154px;
+  font-family: 'Lato', sans-serif;
+  font-size: 34px;
+}
+
+h2 {
+  padding-top: 10px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 34px;
+}
+
+h3 {
+  padding-top: 20px;
+  padding-left: 154px;
+  font-family: 'Lato', sans-serif;
+  font-size: 34px;
+}
+
+/* 1. Student Level */
+
+.flex-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 60%;
+}
+.col {
+  min-width: 300px;
+  min-height: 300px;
+}
+
+p {
+  color: black;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+  font-size: 34px;
+  text-align: center;
+}
+
+.card {
+  background-color: #D3D3D3;
+  background-size: 300px 300px;
+  background-repeat: no-repeat;
+  height: 300px;
+  width: 300px;
+  margin: 10px;
+}
+
+.text {
+  opacity: 1;
+}
+
+.title {
+    padding-top: 70px;
+}
+
+.description {
+    padding-bottom: 20px;
+    font-size: 18px;
+}
+
+
+/* 2. Graduate Level */
+
+/* Companies */
+.col2 {
+  min-width: 400px;
+  min-height: 200px;
+  display: flex;
+}
+
+.companyName {
+  font-size: 22px;
+}
+
+.companyLocation {
+  font-size: 18px;
+}
+
+.website {
+  font-size: 18px;
+}
+
+/* Events */
+.flex-grid2 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  text-align: left;
+  
+}
+
+.col3 {
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.flex-grid-company {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.company {
+  margin-top: .5%;
+  margin-bottom: .5%;
+  background-color: #F0F0F0;
+}
+
+.event {
+  background-color: #8bbde7;
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+  padding-top: 50px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.location {
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
+}
+
+.date {
+  font-size: 12px;
+  color: white;
+}
+
+.time {
+  font-size: 12px;
+  color: white;
+}
+
+
+/* 3. Employed Level */
+
+.flex-grid3 {
+  display: flex;
+  width: 80%;
+  flex-wrap: wrap;
+  margin: auto;
+}
+.col4 {
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.employed {
+  background-color: #8bbde7;
+  height: 250px;
+  width: 350px;
+  margin: 10px;
+}
+
+.eventname {
+  font-size: 24px;
+  font-weight: bold;
+  padding-top: 20px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.location {
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
+}
+
+.date {
+  font-size: 12px;
+  color: white;
+}
+
+.time {
+  font-size: 12px;
+  color: white;
+}

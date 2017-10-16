@@ -8,6 +8,13 @@ h1{
 body{
 background-color: #8bbde7;
 }
+
+img {
+  height: 50px;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
 .box {
   border: 1px solid gray;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);

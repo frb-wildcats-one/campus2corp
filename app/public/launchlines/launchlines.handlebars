@@ -1,0 +1,69 @@
+<!doctype = "html">
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="launchlines.css"></link>
+</head>
+
+<!-- Student Stage -->
+<body>
+<div class="flex-grid">
+{{#each card_content}}
+  <div style = "background-image: url({{this.img}})" class="card" class="col">
+    <div class="text">  <p class = "title text"> {{this.title}}</p>
+      <!-- <p class = "img"> <img src={{this.img}}></img></p> -->
+      <p class = "description"> {{this.description}}</p>
+    </div>
+  </div>
+{{/each}}
+</div>
+
+<!-- Graduate Stage -->
+<h1> Companies Near You </h1>
+
+<div class="flex-grid-company">
+{{#each company_content}}
+  <div class="company" class="col2">
+    <div class = "company-data">
+      <p class = "companyName"> {{this.companyName}}</p>
+      <p class = "companyLocation"> {{this.companyLocation}}</p>
+      <p class = "website"> {{this.website}}</p>
+    </div>
+  </div>
+{{/each}}
+</div>
+
+<h2> Events </h2>
+
+<div class="flex-grid2">
+{{#each event_content}}
+  <div class="events" class="col3">
+    <div class = "event">
+      <p class = "name"> {{this.name}}</p>
+      <p class = "location"> {{this.location}}</p>
+      <p class = "date"> {{this.date}}</p>
+      <p class = "time"> {{this.time}}</p>
+    </div>
+  </div>
+{{/each}}
+</div>
+
+
+<!-- Employed Stage -->
+<h3> Community Events </h3>
+
+<div class="flex-grid3">
+{{#each employed_content}}
+  <div class="employed" class="col4">
+    <div class = "community">
+      <p class = "eventname"> {{this.name}}</p>
+      <p class = "location"> {{this.location}}</p>
+      <p class = "date"> {{this.date}}</p>
+      <p class = "time"> {{this.time}}</p>
+    </div>
+  </div>
+{{/each}}
+</div>
+
+</body>
+</html>
