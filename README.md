@@ -1,3 +1,5 @@
+Youtube video: https://www.youtube.com/watch?v=vTT19uszVJ4&feature=youtu.be
+
 What problem does our app solve?
 
   Transitioning from college to corporate can be difficult. There will be a lot of new adjustments to make and it can easily become overwhelming. Within this transition, it can be difficult to maintain a work/life balance and people can become disconnected from their sense of community. This is especially true if the person is taking on a new job pin an unfamiliar city. Overall, we aimed to solve the problem of someone coming out of college and being underprepared and disconnected in a new job or industry. Launchline helps students, recent graduates, and those recently employed gain guidance in this transition.
