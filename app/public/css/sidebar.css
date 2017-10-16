@@ -101,6 +101,7 @@
 }
 .element-body{
   display:none;
+  width:80%;
   white-space: normal;
   font-size:18px;
   position:relative;
